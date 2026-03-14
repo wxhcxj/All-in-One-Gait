@@ -22,6 +22,7 @@ Parameter Guide:
 - `--dataset_name`: The name of the dataset undergoing preprocessing. This is required.
 - `--ext_name`: An **optional** suffix for the 'save_root' directory to facilitate identification. Defaults to an empty string.
 - `--heatmap_cfg_path`: Path to the configuration file of the heatmap generator. The default setting is `configs/skeletongait/pretreatment_heatmap.yaml`. 
+  (Backward-compatible alias: `--heatemap_cfg_path`.)
 
 Note: If your pose data follows the COCO 18 format (for instance, OU-MVLP pose data or data extracted using [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) in COCO format), ensure to set `transfer_to_coco17` to True in the configuration file `configs/skeletongait/pretreatment_heatmap.yaml`.
 
