@@ -663,7 +663,9 @@ def get_args():
     parser.add_argument('--save_root', type=str, required=True, help="Root directory where generated heatmap .pkl files will be saved (ID-level).")
     parser.add_argument('--ext_name', type=str, default='', help="Extension name to be appended to the 'save_root' for identification.")
     parser.add_argument('--dataset_name', type=str, required=True, help="Name of the dataset being preprocessed.")
-    parser.add_argument('--heatemap_cfg_path', type=str, default='configs/skeletongait/pretreatment_heatmap.yaml', help="Path to the heatmap generator configuration file.")
+    parser.add_argument('--heatmap_cfg_path', '--heatemap_cfg_path', dest='heatmap_cfg_path', type=str,
+                        default='configs/skeletongait/pretreatment_heatmap.yaml',
+                        help="Path to the heatmap generator configuration file.")
     parser.add_argument("--local_rank", type=int, default=0, help="Local rank for distributed processing, defaults to 0 for non-distributed setups.")
     opt = parser.parse_args()
     return opt
@@ -697,7 +699,7 @@ if __name__ == "__main__":
     args = get_args()
 
     # Load the heatmap generator configuration
-    with open(args.heatemap_cfg_path, 'r') as stream:
+    with open(args.heatmap_cfg_path, 'r') as stream:
         generate_heatemap_cfgs = yaml.safe_load(stream)
         generate_heatemap_cfgs = replace_variables(generate_heatemap_cfgs, generate_heatemap_cfgs)
     # Create the dataset
